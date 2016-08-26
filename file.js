@@ -8,19 +8,17 @@
 
 
     function process() {
-        var template = getOfxTemplate();
         var transactions = getTransactions();
 
+        var template = getOfxTemplate();
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.BANKTRANLIST.STMTTRN = transactions.transactions;
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.BANKTRANLIST.DTSTART = transactions.start.format("yyyymmdd");
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.BANKTRANLIST.DTEND = transactions.end.format("yyyymmdd");
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.LEDGERBAL.DTASOF = new Date().format("yyyymmdd");
 
-
         var x2js = new X2JS();
         var xmlBody = x2js.json2xml_str(template);
         var fileText = getHeader() + xmlBody;
-
 
         var file = new File([fileText], "statement.ofx", {
             type: "text/plain;charset=utf-8"
@@ -44,7 +42,7 @@
     }
 
     function getTransactions() {
-        var jsonString = document.getElementById("completedBillingActivityJSONArray").value
+        var jsonString = document.getElementById("completedBillingActivityJSONArray").value;
         var transactions = eval(jsonString);
 
         var start;
@@ -54,7 +52,7 @@
             var postDate = new Date(entry.POST_DATE);
             var ofxDate = postDate.format("yyyymmdd");
             var description = cleanDescription(entry.TRANS_DESC);
-            var amt = -parseFloat(entry.CHARGE);
+            var amt = -parseFloat(entry.TRANS_AMOUNT);
             var ref = entry.REF_NUM ? entry.REF_NUM : description + ofxDate;
             ref = ref.trim();
 
