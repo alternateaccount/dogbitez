@@ -51,7 +51,7 @@
         transactions.forEach(function (entry) {
             var postDate = new Date(entry.POST_DATE);
             var ofxDate = postDate.format("yyyymmdd");
-            var description = cleanDescription(entry.TRANS_DESC);
+            var description = "Amazon - " + cleanDescription(entry.TRANS_DESC);
             var amt = -parseFloat(entry.TRANS_AMOUNT);
             var ref = entry.REF_NUM ? entry.REF_NUM : description + ofxDate;
             ref = ref.trim();
