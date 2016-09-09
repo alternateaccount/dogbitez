@@ -16,7 +16,7 @@
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.BANKTRANLIST.DTEND = transactions.end.format("yyyymmdd");
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.LEDGERBAL.DTASOF = new Date().format("yyyymmdd");
 
-        var balance = Number($("p:contains('Current Balance')").parent().find(".cent, .dollarAmt").text().replace(/[^\d.-]/g, ''));
+        var balance = - Number($("p:contains('Current Balance')").parent().find(".cent, .dollarAmt").text().replace(/[^\d.-]/g, ''));
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.LEDGERBAL.BALAMT = balance;
 
         var x2js = new X2JS();
