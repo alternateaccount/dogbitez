@@ -1,6 +1,6 @@
-#Bookmarklet: A Bookmarklet
+# Bookmarklet
 
-A bookmarklet and to download stuff
+A bookmarklet to screen-scrape transaction data for the Amazon Store Card on Synchrony Credit, convert and downloaded as an OFX file which can be imported into personal finance software.
 
 #### Bookmarklet
 
