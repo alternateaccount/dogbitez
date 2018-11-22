@@ -31,7 +31,7 @@
 
 
     function getHeader() {
-        var header = '<?xml version="1.0" encoding="UTF-8"?>\r\n<?OFX OFXHEADER="200" VERSION="220" SECURITY="NONE" OLDFILEUID="NONE" NEWFILEUID="NONE"?>\r\n';
+        var header = '<?xml version="1.0" encoding="UTF-8"?>\n<?OFX OFXHEADER="200" VERSION="220" SECURITY="NONE" OLDFILEUID="NONE" NEWFILEUID="NONE"?>\n';
 
         return header;
     }
