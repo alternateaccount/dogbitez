@@ -26,7 +26,7 @@
         var file = new File([fileText], "statement.ofx", {
             type: "text/plain;charset=utf-8"
         });
-        saveAs(file,"statement.ofx", false);
+        saveAs(file,"statement.ofx", true);
     }
 
 
