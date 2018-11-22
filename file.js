@@ -18,10 +18,13 @@
 
         var balance = - Number($("p:contains('Current Balance')").parent().find(".cent, .dollarAmt").text().replace(/[^\d.-]/g, ''));
         template.OFX.CREDITCARDMSGSRSV1.CCSTMTTRNRS.CCSTMTRS.LEDGERBAL.BALAMT = balance;
-
+        
         var x2js = new X2JS();
         var xmlBody = x2js.json2xml_str(template);
         var fileText = getHeader() + xmlBody;
+
+        var actNumber = document.getElementById("ivaAccountNo").value;
+        fileText = fileText.replace("${actId}", actNumber);
 
         var file = new File([fileText], "statement.ofx", {
             type: "text/plain;charset=utf-8"
@@ -38,7 +41,7 @@
 
 
     function getOfxTemplate() {
-        var templateString = '<OFX><CREDITCARDMSGSRSV1><CCSTMTTRNRS><TRNUID>0</TRNUID><STATUS><CODE>0</CODE><SEVERITY>INFO</SEVERITY></STATUS><CCSTMTRS><CURDEF>USD</CURDEF><CCACCTFROM><ACCTID>999988</ACCTID></CCACCTFROM><BANKTRANLIST><DTSTART></DTSTART><DTEND></DTEND></BANKTRANLIST><LEDGERBAL><BALAMT>0</BALAMT><DTASOF></DTASOF></LEDGERBAL></CCSTMTRS></CCSTMTTRNRS></CREDITCARDMSGSRSV1></OFX>';
+        var templateString = '<OFX><CREDITCARDMSGSRSV1><CCSTMTTRNRS><TRNUID>0</TRNUID><STATUS><CODE>0</CODE><SEVERITY>INFO</SEVERITY></STATUS><CCSTMTRS><CURDEF>USD</CURDEF><CCACCTFROM><ACCTID>${actId}</ACCTID></CCACCTFROM><BANKTRANLIST><DTSTART></DTSTART><DTEND></DTEND></BANKTRANLIST><LEDGERBAL><BALAMT>0</BALAMT><DTASOF></DTASOF></LEDGERBAL></CCSTMTRS></CCSTMTTRNRS></CREDITCARDMSGSRSV1></OFX>';
 
         var x2js = new X2JS();
         return x2js.xml_str2json(templateString);
