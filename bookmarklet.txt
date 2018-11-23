@@ -1,1 +1,0 @@
-javascript:(function(){var el=document.createElement('script');el.src='https://rawgit.com/alternateaccount/dogbitez/master/file.min.js?bust='+new Date().getTime();document.body.appendChild(el);})();
