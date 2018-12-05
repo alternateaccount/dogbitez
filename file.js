@@ -24,7 +24,7 @@
         var fileText = getHeader() + xmlBody;
 
         var actNumber = document.getElementById("ivaAccountNo").value;
-        fileText = fileText.replace(/${actId}/g, actNumber);
+        fileText = fileText.replace(/\$\{actId\}/g, actNumber);
         fileText = fileText.replace(/&apos;/g, "'");
         fileText = fileText.replace(/&amp;/g, "&");
         fileText = fileText.replace(/&quot;/g, '"');
