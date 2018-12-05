@@ -25,7 +25,10 @@
 
         var actNumber = document.getElementById("ivaAccountNo").value;
         fileText = fileText.replace("${actId}", actNumber);
-
+        fileText = fileText.replace("&apos;", "'");
+        fileText = fileText.replace("&amp;", "&");
+        fileText = fileText.replace("&quot;", '"');
+        
         var file = new File([fileText], "statement.ofx", {
             type: "text/plain;charset=utf-8"
         });
